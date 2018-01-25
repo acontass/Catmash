@@ -12,6 +12,14 @@ class AllCatsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    
+    @objc internal func refresh() {
+        tableView.reloadData()
+        tableView.refreshControl?.endRefreshing()
     }
 
     override func didReceiveMemoryWarning() {
