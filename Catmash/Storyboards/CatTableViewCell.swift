@@ -8,15 +8,33 @@
 
 import UIKit
 
+/// Cell of cat.
+
 class CatTableViewCell: UITableViewCell {
+    
+    /**
+     enumeration of pictures in the cell.
+     
+     ```
+     case left = 0,
+     right
+     ```
+     */
     
     private enum eSide: Int {
         case left = 0,
         right
     }
 
+    /// All image views of the cell.
+    
     @IBOutlet var imageViewCollection: [UIImageView]!
+
+    /// All labels of the cell.
+    
     @IBOutlet var labelsCollection: [UILabel]!
+    
+    /// The two cats to display in the cell.
     
     public var cats: (Cat, Cat)? = nil {
         didSet {

@@ -25,7 +25,17 @@ extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: a)
     }
     
+    /// Main red color of the application (see navigation bar)
+    
     static let mainRed = UIColor(r: 206, g: 11, b: 36)
+    
+    /**
+     Create image with color.
+     
+     - returns: An UIImage of the color.
+     
+     - parameter size: Optional size of the image (default is navigation bar size).
+     */
     
     public func image(_ size: CGSize = CGSize(width: UIScreen.main.bounds.width, height: 64)) -> UIImage {
         return UIGraphicsImageRenderer(size: size).image { rendererContext in

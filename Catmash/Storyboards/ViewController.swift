@@ -8,11 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+/// Home view of the application.
 
+class ViewController: UIViewController {
+    
+    /// The cat image view at top of the view.
+    
     @IBOutlet weak var topImageView: UIImageView!
-    @IBOutlet weak var vsImage: UIImageView!
+
+    /// The cat image view at top of the view.
+    
     @IBOutlet weak var bottomImageView: UIImageView!
+    
+    /// Current displayed cats.
     
     private var displayedCats = (top: 0, bottom: 1)
 
@@ -25,22 +33,28 @@ class ViewController: UIViewController {
 //        let bottom = UICustomView(position: .bottom)
 //        bottom.image = UIImage(named: "1")
 //        view.insertSubview(bottom, belowSubview: vsImage)
+        updateImages()
     }
     
+    /**
+     Display new cats.
+     
+     - returns: Nothing.
+     */
+    
     private func updateImages() {
-        let topIdx = arc4random_uniform(Constants.catsCount - UInt32(1))
-        topImageView.image = UIImage(named: "\(topIdx)")
-        
-        var bottomIdx = arc4random_uniform(Constants.catsCount - UInt32(1))
+        let topIdx = arc4random_uniform(UInt32(Cat.all.count) - 1)
+        var bottomIdx = arc4random_uniform(UInt32(Cat.all.count) - 1)
         while (topIdx == bottomIdx) {
-            bottomIdx = arc4random_uniform(Constants.catsCount - UInt32(1))
+            bottomIdx = arc4random_uniform(UInt32(Cat.all.count) - 1)
         }
+        topImageView.image = UIImage(named: "\(topIdx)")
         bottomImageView.image = UIImage(named: "\(bottomIdx)")
         displayedCats = (Int(topIdx), Int(bottomIdx))
         
         topImageView.alpha = 0
         bottomImageView.alpha = 0
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 0.5) {
             self.topImageView.alpha = 1
             self.bottomImageView.alpha = 1
         }

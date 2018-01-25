@@ -10,8 +10,6 @@ import UIKit
 
 class AllCatsTableViewController: UITableViewController {
     
-    public var offset = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -27,13 +25,12 @@ class AllCatsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Int(Constants.catsCount) / 2
+        return Cat.all.count / 2
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CatCell", for: indexPath) as! CatTableViewCell
-        cell.cats = (Cat.all[indexPath.row + offset], Cat.all[indexPath.row + offset + 1])
-        offset += 1
+        cell.cats = (Cat.all[indexPath.row], Cat.all[indexPath.row % Cat.all.count + Cat.all.count / 2])
         return cell
     }
 

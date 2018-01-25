@@ -85,7 +85,6 @@
                     <connections>
                         <outlet property="bottomImageView" destination="4uD-17-ZIn" id="Ac1-TE-gwS"/>
                         <outlet property="topImageView" destination="vUj-hI-Qj6" id="LIf-hM-52b"/>
-                        <outlet property="vsImage" destination="oNC-3U-9et" id="uMc-j8-OHc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
