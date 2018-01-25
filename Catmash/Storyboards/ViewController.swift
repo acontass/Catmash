@@ -12,6 +12,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    private enum ePosition: Int {
+        case top = 0,
+        bottom
+    }
+    
     /// The cat image view at top of the view.
     
     @IBOutlet weak var topImageView: UIImageView!
@@ -42,16 +47,20 @@ class ViewController: UIViewController {
                         let json = try JSONSerialization.jsonObject(with: unwrappedData, options: .mutableContainers) as! NSDictionary
                         var idx = 0
                         for cat in json["images"] as? [NSDictionary] ?? [] {
-                            debugPrint(cat["url"] as! String)
                             do {
                                 let imgData = try Data(contentsOf: URL(string: cat["url"] as? String ?? "")!)
+                                DispatchQueue.main.async {
                                 Cat.all.append(Cat(image: UIImage(data: imgData), index: idx))
-                                if idx == 1 {
-                                    DispatchQueue.main.async {
-                                        self.updateImages()
-                                    }
+                                if idx == 0 {
+                                    self.displayedCats.top = idx
+                                    self.updateImage(keep: .bottom)
+                                }
+                                else if idx == 1 {
+                                    self.displayedCats.bottom = idx
+                                    self.updateImage(keep: .top)
                                 }
                                 idx += 1
+                                }
                             }
                             catch let error {
                                 debugPrint(error.localizedDescription)
@@ -90,21 +99,35 @@ class ViewController: UIViewController {
      - returns: Nothing.
      */
     
-    private func updateImages() {
-        let topIdx = arc4random_uniform(UInt32(Cat.all.count) - 1)
-        var bottomIdx = arc4random_uniform(UInt32(Cat.all.count) - 1)
-        while (topIdx == bottomIdx) {
-            bottomIdx = arc4random_uniform(UInt32(Cat.all.count) - 1)
+    private func updateImage(keep: ePosition, add: Bool = false) {
+        if add && max(displayedCats.top, displayedCats.bottom) + 1 >= Cat.all.count {
+            let alert = Tools.createAlert(title: "Be patient", message: "The image is downloading", buttons: "Ok", completion: nil)
+            present(alert, animated: true, completion: nil)
+            return
         }
-        topImageView.image = Cat.all[Int(topIdx)].image
-        bottomImageView.image = Cat.all[Int(bottomIdx)].image
-        displayedCats = (Int(topIdx), Int(bottomIdx))
-        
-        topImageView.alpha = 0
-        bottomImageView.alpha = 0
-        UIView.animate(withDuration: 0.5) {
-            self.topImageView.alpha = 1
-            self.bottomImageView.alpha = 1
+        if keep == .top {
+            if displayedCats.bottom > -1 {
+                if add {
+                    displayedCats.bottom += max(displayedCats.top, displayedCats.bottom) + 1
+                }
+                bottomImageView.image = Cat.all[displayedCats.bottom].image
+            }
+            bottomImageView.alpha = 0
+            UIView.animate(withDuration: 0.5) {
+                self.bottomImageView.alpha = 1
+            }
+        }
+        else {
+            if displayedCats.top > -1 {
+                if add {
+                    displayedCats.top = max(displayedCats.top, displayedCats.bottom) + 1
+                }
+                topImageView.image = Cat.all[displayedCats.top].image
+            }
+            topImageView.alpha = 0
+            UIView.animate(withDuration: 0.5) {
+                self.topImageView.alpha = 1
+            }
         }
     }
     
@@ -113,15 +136,15 @@ class ViewController: UIViewController {
             return
         }
         Cat.all[displayedCats.top].upVote()
-        updateImages()
+        updateImage(keep: .top, add: true)
     }
 
     @IBAction func bottomImageTouched(_ sender: UITapGestureRecognizer) {
         guard displayedCats.bottom != -1 else {
             return
         }
-        Cat.all[displayedCats.top].upVote()
-        updateImages()
+        Cat.all[displayedCats.bottom].upVote()
+        updateImage(keep: .bottom, add: true)
     }
     
     @IBAction func profileButtonTouched(_ sender: UIBarButtonItem) {
