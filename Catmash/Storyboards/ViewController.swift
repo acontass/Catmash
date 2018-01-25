@@ -29,6 +29,12 @@ class ViewController: UIViewController {
     
     private var displayedCats = (top: -1, bottom: -1)
     
+    /**
+     Make the url request and initialize all cats.
+     
+     - returns: Nothing.
+     */
+    
     private func setAllCats() {
         if let url = URL(string: "https://latelier.co/data/cats.json".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             let request = NSMutableURLRequest(url: url)
@@ -97,6 +103,9 @@ class ViewController: UIViewController {
      Display new cats.
      
      - returns: Nothing.
+     
+     - parameter keep: Keep top or bottom image.
+     - parameter add: Boolean that indicates if it would increment the index of the picture to change.
      */
     
     private func updateImage(keep: ePosition, add: Bool = false) {
@@ -108,7 +117,7 @@ class ViewController: UIViewController {
         if keep == .top {
             if displayedCats.bottom > -1 {
                 if add {
-                    displayedCats.bottom += max(displayedCats.top, displayedCats.bottom) + 1
+                    displayedCats.bottom = max(displayedCats.top, displayedCats.bottom) + 1
                 }
                 bottomImageView.image = Cat.all[displayedCats.bottom].image
             }
