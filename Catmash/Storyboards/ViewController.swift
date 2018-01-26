@@ -52,9 +52,9 @@ class ViewController: UIViewController {
                     do {
                         let json = try JSONSerialization.jsonObject(with: unwrappedData, options: .mutableContainers) as! NSDictionary
                         var idx = 0
-                        for cat in json["images"] as? [NSDictionary] ?? [] {
+                        (json["images"] as? [NSDictionary] ?? []).forEach() {
                             do {
-                                let imgData = try Data(contentsOf: URL(string: cat["url"] as? String ?? "")!)
+                                let imgData = try Data(contentsOf: URL(string: $0["url"] as? String ?? "")!)
                                 DispatchQueue.main.async {
                                 Cat.all.append(Cat(image: UIImage(data: imgData), index: idx))
                                 if idx == 0 {

@@ -74,7 +74,7 @@
 				DB0C37E4201A4FEE007DAA46 /* Models */,
 				DB0C37C9201A474C007DAA46 /* CustomUI */,
 				DB0C37C7201A4731007DAA46 /* Storyboards */,
-				DB0C37D2201A47C4007DAA46 /* Resources */,
+				DB049DEE2019FB0C0078D134 /* Assets.xcassets */,
 				DB049DF32019FB0C0078D134 /* Info.plist */,
 			);
 			path = Catmash;
@@ -107,14 +107,6 @@
 				DBD9D1BE201A250300EDAC85 /* CutView.swift */,
 			);
 			path = CustomUI;
-			sourceTree = "<group>";
-		};
-		DB0C37D2201A47C4007DAA46 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				DB049DEE2019FB0C0078D134 /* Assets.xcassets */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		DB0C37D3201A480B007DAA46 /* Tools */ = {
