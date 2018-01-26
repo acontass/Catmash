@@ -18,7 +18,6 @@
 		DB0C37E3201A4D9B007DAA46 /* CatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0C37E2201A4D9B007DAA46 /* CatTableViewCell.swift */; };
 		DB0C37E6201A4FFD007DAA46 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0C37E5201A4FFD007DAA46 /* Cat.swift */; };
 		DB0C37E8201B4CB9007DAA46 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0C37E7201B4CB9007DAA46 /* NotificationsManager.swift */; };
-		DB0C37EC201B5757007DAA46 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0C37EB201B5757007DAA46 /* TestViewController.swift */; };
 		DBD9D1BD201A0FBF00EDAC85 /* UICustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9D1BC201A0FBF00EDAC85 /* UICustomView.swift */; };
 		DBD9D1BF201A250300EDAC85 /* CutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9D1BE201A250300EDAC85 /* CutView.swift */; };
 /* End PBXBuildFile section */
@@ -37,7 +36,6 @@
 		DB0C37E2201A4D9B007DAA46 /* CatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatTableViewCell.swift; sourceTree = "<group>"; };
 		DB0C37E5201A4FFD007DAA46 /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 		DB0C37E7201B4CB9007DAA46 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
-		DB0C37EB201B5757007DAA46 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		DBD9D1BC201A0FBF00EDAC85 /* UICustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICustomView.swift; sourceTree = "<group>"; };
 		DBD9D1BE201A250300EDAC85 /* CutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,7 +90,6 @@
 				DB049DE92019FB0C0078D134 /* ViewController.swift */,
 				DB0C37E0201A4D85007DAA46 /* AllCatsTableViewController.swift */,
 				DB0C37E2201A4D9B007DAA46 /* CatTableViewCell.swift */,
-				DB0C37EB201B5757007DAA46 /* TestViewController.swift */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -213,7 +210,6 @@
 				DB0C37E3201A4D9B007DAA46 /* CatTableViewCell.swift in Sources */,
 				DB0C37E8201B4CB9007DAA46 /* NotificationsManager.swift in Sources */,
 				DBD9D1BF201A250300EDAC85 /* CutView.swift in Sources */,
-				DB0C37EC201B5757007DAA46 /* TestViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

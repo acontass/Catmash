@@ -58,17 +58,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(didLoadCat(_:)), name: NotificationsManager.didLoadCat, object: nil)
-        
-        // TODO: This is proper way to make cutted image views. (Not yet finished)
-        
-//        for idx in 0...1
-//        let top = UICustomView(position: .top)
-//        top.image = UIImage(named: "0")
-//        view.insertSubview(top, belowSubview: vsImage)
-//        let bottom = UICustomView(position: .bottom)
-//        bottom.image = UIImage(named: "1")
-//        view.insertSubview(bottom, belowSubview: vsImage)
-//        updateImages()
     }
     
     /**
@@ -126,11 +115,6 @@ class ViewController: UIViewController {
         }
         Cat.all[displayedCats.bottom].upVote()
         updateImage(keep: .bottom, add: true)
-    }
-    
-    @IBAction func profileButtonTouched(_ sender: UIBarButtonItem) {
-        let alert = Tools.createAlert(title: nil, message: "This part is not yet implemented.", buttons: "Ok", completion: nil)
-        present(alert, animated: true, completion: nil)
     }
     
 }
