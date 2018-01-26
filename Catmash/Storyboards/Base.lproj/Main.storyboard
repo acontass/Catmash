@@ -33,10 +33,10 @@
                                 </connections>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YBh-vY-CiJ" customClass="CutView" customModule="Catmash" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="358.5" width="375" height="14"/>
+                                <rect key="frame" x="0.0" y="356.5" width="375" height="18"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="14" id="ZlS-bh-wfK"/>
+                                    <constraint firstAttribute="height" constant="18" id="ZlS-bh-wfK"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="offset">
@@ -74,6 +74,7 @@
                         <barButtonItem key="leftBarButtonItem" image="IconProfile" landscapeImage="IconProfile" id="b6B-0Q-x9G">
                             <connections>
                                 <action selector="profileButtonTouched:" destination="BYZ-38-t0r" id="g3V-Vd-cBl"/>
+                                <segue destination="286-S5-ggJ" kind="show" id="rhH-jb-ubl"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="IconMenu" landscapeImage="IconMenu" id="Rb1-7X-Ged">
@@ -105,7 +106,7 @@
         <scene sceneID="HdA-Q8-w1i">
             <objects>
                 <tableViewController id="9XJ-9K-kmf" customClass="AllCatsTableViewController" customModule="Catmash" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="185" estimatedRowHeight="185" sectionHeaderHeight="28" sectionFooterHeight="28" id="fzf-V5-JKD">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="185" estimatedRowHeight="185" sectionHeaderHeight="28" sectionFooterHeight="28" id="fzf-V5-JKD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -170,6 +171,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfM-re-kDT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1205.5999999999999" y="116.49175412293854"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="IW5-e6-ZED">
+            <objects>
+                <viewController id="286-S5-ggJ" customClass="TestViewController" customModule="Catmash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z8A-Qh-HRQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="pSa-9D-AK0"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3fh-AK-VIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="457" y="834"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8TN-qH-x5Y">

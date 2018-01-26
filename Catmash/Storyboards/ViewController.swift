@@ -29,63 +29,35 @@ class ViewController: UIViewController {
     
     private var displayedCats = (top: -1, bottom: -1)
     
-    /**
-     Make the url request and initialize all cats.
-     
-     - returns: Nothing.
-     */
-    
-    private func setAllCats() {
-        if let url = URL(string: "https://latelier.co/data/cats.json".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
-            let request = NSMutableURLRequest(url: url)
-            request.httpMethod = "GET"
-            let task = URLSession.shared.dataTask(with: request as URLRequest) {
-                data, response, error in
-                DispatchQueue.main.async {
-                    if let error = error {
-                        let alert = Tools.createAlert(title: "Error", message: error.localizedDescription, buttons: "Cancel", completion: nil)
-                        self.present(alert, animated: true, completion: nil)
-                        return
-                    }
-                }
-                if let unwrappedData = data {
-                    do {
-                        let json = try JSONSerialization.jsonObject(with: unwrappedData, options: .mutableContainers) as! NSDictionary
-                        var idx = 0
-                        (json["images"] as? [NSDictionary] ?? []).forEach() {
-                            do {
-                                let imgData = try Data(contentsOf: URL(string: $0["url"] as? String ?? "")!)
-                                DispatchQueue.main.async {
-                                Cat.all.append(Cat(image: UIImage(data: imgData), index: idx))
-                                if idx == 0 {
-                                    self.displayedCats.top = idx
-                                    self.updateImage(keep: .bottom)
-                                }
-                                else if idx == 1 {
-                                    self.displayedCats.bottom = idx
-                                    self.updateImage(keep: .top)
-                                }
-                                idx += 1
-                                }
-                            }
-                            catch let error {
-                                debugPrint(error.localizedDescription)
-                            }
-                        }
-                    }
-                    catch let error {
-                        let alert = Tools.createAlert(title: "Erreur", message: error.localizedDescription, buttons: "Cancel", completion: nil)
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                }
+    @objc internal func didLoadCat(_ notification: Notification) {
+        if let position = notification.userInfo?.values.first as? String {
+            print(position)
+            if position == "top" {
+                
+                displayedCats.top = 0
+                updateImage(keep: .bottom)
+/*                let top = UICustomView(position: .top)
+//                top.image = Cat.all.first?.image
+                view.addSubview(top)*/
             }
-            task.resume()
+            else {
+                displayedCats.bottom = 1
+                updateImage(keep: .top)
+
+/*                let bottom = UICustomView(position: .bottom)
+                bottom.image = Cat.all.last?.image
+                view.addSubview(bottom)*/
+            }
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setAllCats()
+        NotificationCenter.default.addObserver(self, selector: #selector(didLoadCat(_:)), name: NotificationsManager.didLoadCat, object: nil)
         
         // TODO: This is proper way to make cutted image views. (Not yet finished)
         

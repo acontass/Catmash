@@ -56,11 +56,11 @@ class UICustomView: UIView {
             if position == .top {
                 points = [CGPoint(x: rect.origin.x, y: rect.origin.y),
                           CGPoint(x: rect.width, y: rect.origin.y),
-                          CGPoint(x: rect.width, y: rect.height - 10),
+                          CGPoint(x: rect.width, y: rect.height - 50),
                           CGPoint(x: rect.origin.x, y: rect.height)]
             }
             else {
-                points = [CGPoint(x: rect.origin.x, y: rect.origin.y + 10),
+                points = [CGPoint(x: rect.origin.x, y: rect.origin.y + 50),
                           CGPoint(x: rect.width, y: rect.origin.y),
                           CGPoint(x: rect.width, y: rect.height),
                           CGPoint(x: rect.origin.x, y: rect.height)]
@@ -73,6 +73,13 @@ class UICustomView: UIView {
             context?.setFillColor((position == .top) ? UIColor.blue.withAlphaComponent(0.2).cgColor : UIColor.red.withAlphaComponent(0.2).cgColor)
             context?.fillPath()
             context?.restoreGState()
+            
+            let layer = CALayer()
+//            layer.frame.
+            layer.backgroundColor = UIColor.blue.cgColor
+            self.layer.insertSublayer(layer, at: 0)
+//            self.layer.mask = layer;
+//            self.layer.masksToBounds = true;
         }
     }
 
