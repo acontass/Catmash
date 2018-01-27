@@ -11,17 +11,68 @@ import UIKit
 /// Cat model.
 
 class Cat {
+
+    // MARK: Static part.
+
+    /// All cats in array of Cat instances (initialized only at first call).
+
+    static public private(set) var all = [Cat]()
+
+    /// Total cats count.
+
+    static public private(set) var total = 0
+
+    /// All cats identifiers.
+
+    static public private(set) var ids = [String]()
+
+    /**
+     Load all pictures of cats.
+
+     - returns: Nothing.
+
+     - parameter json: The json data of the cats request.
+     */
+
+    static private func loadCatsPictures(_ json: NSDictionary) {
+        guard let images = json["images"] as? [NSDictionary] else {
+            return
+        }
+        total = images.count
+        images.forEach() { cat in
+            do {
+                let imgData = try Data(contentsOf: URL(string: cat["url"] as? String ?? "")!)
+                DispatchQueue.main.async {
+                    Cat.all.append(Cat(image: UIImage(data: imgData), id: cat["id"] as? String))
+                    if Cat.all.count == 1 {
+                        NotificationCenter.default.post(name: NotificationsManager.didLoadCat, object: self, userInfo: ["position": "top"])
+                    }
+                    else if Cat.all.count == 2 {
+                        NotificationCenter.default.post(name: NotificationsManager.didLoadCat, object: self, userInfo: ["position": "bottom"])
+                    }
+                    if Cat.all.count >= total {
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    }
+                }
+            }
+            catch let error {
+                total -= 1
+                debugPrint(error.localizedDescription)
+            }
+        }
+    }
     
     /**
      Make the url request and initialize all cats.
      
      - returns: Nothing.
      
-     -parameter controller: The current view controller used to display errors alerts.
+     - parameter controller: The current view controller used to display errors alerts.
      */
     
     static public func loadAllCats(on controller: UIViewController? = nil) {
         if let url = URL(string: "https://latelier.co/data/cats.json".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             let request = NSMutableURLRequest(url: url)
             request.httpMethod = "GET"
             let task = URLSession.shared.dataTask(with: request as URLRequest) {
@@ -36,30 +87,7 @@ class Cat {
                 if let unwrappedData = data {
                     do {
                         let json = try JSONSerialization.jsonObject(with: unwrappedData, options: .mutableContainers) as! NSDictionary
-                        var idx = 0
-                        (json["images"] as? [NSDictionary] ?? []).forEach() { cat in
-                            do {
-                                let imgData = try Data(contentsOf: URL(string: cat["url"] as? String ?? "")!)
-                                DispatchQueue.main.async {
-                                    Cat.all.append(Cat(image: UIImage(data: imgData), index: idx, id: cat["id"] as? String))
-//                                    print(Cat.all.last)
-                                    if idx == 0 {
-                                        NotificationCenter.default.post(name: NotificationsManager.didLoadCat, object: self, userInfo: ["position": "top"])
-//                                        self.displayedCats.top = idx
-//                                        self.updateImage(keep: .bottom)
-                                    }
-                                    else if idx == 1 {
-                                        NotificationCenter.default.post(name: NotificationsManager.didLoadCat, object: self, userInfo: ["position": "bottom"])
-//                                        self.displayedCats.bottom = idx
-//                                        self.updateImage(keep: .top)
-                                    }
-                                    idx += 1
-                                }
-                            }
-                            catch let error {
-                                debugPrint(error.localizedDescription)
-                            }
-                        }
+                        loadCatsPictures(json)
                     }
                     catch let error {
                         let alert = Tools.createAlert(title: "Erreur", message: error.localizedDescription, buttons: "Cancel", completion: nil)
@@ -70,15 +98,34 @@ class Cat {
             task.resume()
         }
     }
+
+    static public var allDisplayed: Bool {
+        get {
+            for cat in all {
+                if !cat.displayed {
+                    return false
+                }
+            }
+            return (all.count >= total) ? true : false
+        }
+    }
+
+    static public func getNoDisplayedCat() -> Cat? {
+        for cat in all {
+            if !cat.displayed {
+                cat.displayed = true
+                return cat
+            }
+        }
+        return nil
+    }
     
-    /// All cats in array of Cat instances (initialized only at first call).
-    
-    static public private(set) var all = [Cat]()
+/*    /// index of the cat.
+
+    private let index: Int!*/
     
     /// Picture of the cat.
-    
-    private let index: Int!
-    
+
     public let image: UIImage?
     
     /// Mark of the cat.
@@ -88,6 +135,10 @@ class Cat {
     /// The id of the cat.
     
     public let id: String?
+
+    /// True if cat allready displayed.
+
+    fileprivate var displayed = false
     
     /**
      Initializer of Cat.
@@ -96,9 +147,9 @@ class Cat {
      - parameter index: The index of the cat in all cats array.
      */
     
-    init(image: UIImage?, index: Int, id: String?) {
+    init(image: UIImage?, id: String?) {
         self.image = image
-        self.index = index
+//        self.index = index
         self.id = id
     }
     

@@ -10,10 +10,44 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--All Cats Collection View Controller-->
+        <scene sceneID="Txq-rs-vWH">
+            <objects>
+                <collectionViewController id="jdZ-3e-eG1" customClass="AllCatsCollectionViewController" customModule="Catmash" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="5gF-Qt-tuD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ccD-F4-qQw">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="oSO-Bg-y9h">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="jdZ-3e-eG1" id="RDK-aW-L9I"/>
+                            <outlet property="delegate" destination="jdZ-3e-eG1" id="nxf-42-YDu"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bl4-BY-2ZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1238" y="118"/>
+        </scene>
         <!--CATMASH-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Catmash" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Catmash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,10 +105,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="CATMASH" largeTitleDisplayMode="never" id="YMc-g2-cjr">
-                        <barButtonItem key="leftBarButtonItem" image="IconProfile" landscapeImage="IconProfile" id="b6B-0Q-x9G"/>
                         <barButtonItem key="rightBarButtonItem" image="IconMenu" landscapeImage="IconMenu" id="Rb1-7X-Ged">
                             <connections>
-                                <segue destination="9XJ-9K-kmf" kind="show" id="AUR-sl-HMH"/>
+                                <segue destination="jdZ-3e-eG1" kind="show" id="5Jp-Jk-dWx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -97,76 +130,6 @@
             </objects>
             <point key="canvasLocation" x="456.80000000000001" y="118.29085457271366"/>
         </scene>
-        <!--All Cats Table View Controller-->
-        <scene sceneID="HdA-Q8-w1i">
-            <objects>
-                <tableViewController id="9XJ-9K-kmf" customClass="AllCatsTableViewController" customModule="Catmash" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="185" estimatedRowHeight="185" sectionHeaderHeight="28" sectionFooterHeight="28" id="fzf-V5-JKD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CatCell" rowHeight="185" id="egJ-sB-iNk" customClass="CatTableViewCell" customModule="Catmash" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="185"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="egJ-sB-iNk" id="031-P9-zns">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="184.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pQ5-de-sva">
-                                            <rect key="frame" x="0.0" y="0.0" width="183.5" height="155"/>
-                                        </imageView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kd6-l4-8bX">
-                                            <rect key="frame" x="191.5" y="0.0" width="183.5" height="155"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjJ-KF-6pW">
-                                            <rect key="frame" x="70" y="159" width="42" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Wc-XQ-peX">
-                                            <rect key="frame" x="262" y="159" width="42" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Kd6-l4-8bX" secondAttribute="trailing" id="02i-au-fDx"/>
-                                        <constraint firstItem="pQ5-de-sva" firstAttribute="top" secondItem="031-P9-zns" secondAttribute="top" id="4Jv-1E-kd3"/>
-                                        <constraint firstAttribute="bottom" secondItem="DjJ-KF-6pW" secondAttribute="bottom" constant="4" id="Ar7-Z2-8Iv"/>
-                                        <constraint firstAttribute="bottom" secondItem="5Wc-XQ-peX" secondAttribute="bottom" constant="4" id="Bxf-Al-RfQ"/>
-                                        <constraint firstItem="pQ5-de-sva" firstAttribute="leading" secondItem="031-P9-zns" secondAttribute="leading" id="UYW-fP-ZJb"/>
-                                        <constraint firstItem="Kd6-l4-8bX" firstAttribute="width" secondItem="pQ5-de-sva" secondAttribute="width" id="abt-yU-trI"/>
-                                        <constraint firstItem="DjJ-KF-6pW" firstAttribute="centerX" secondItem="pQ5-de-sva" secondAttribute="centerX" id="drh-21-YYk"/>
-                                        <constraint firstItem="5Wc-XQ-peX" firstAttribute="top" secondItem="Kd6-l4-8bX" secondAttribute="bottom" constant="4" id="eoq-PF-nKB"/>
-                                        <constraint firstAttribute="bottom" secondItem="pQ5-de-sva" secondAttribute="bottom" constant="29.5" id="fvA-Lb-1D2"/>
-                                        <constraint firstItem="Kd6-l4-8bX" firstAttribute="top" secondItem="031-P9-zns" secondAttribute="top" id="kJG-R4-KFK"/>
-                                        <constraint firstAttribute="bottom" secondItem="Kd6-l4-8bX" secondAttribute="bottom" constant="29.5" id="nAT-FI-Ze0"/>
-                                        <constraint firstItem="DjJ-KF-6pW" firstAttribute="top" secondItem="pQ5-de-sva" secondAttribute="bottom" constant="4" id="q8k-uL-syV"/>
-                                        <constraint firstItem="5Wc-XQ-peX" firstAttribute="centerX" secondItem="Kd6-l4-8bX" secondAttribute="centerX" id="qGZ-CG-k4b"/>
-                                        <constraint firstItem="Kd6-l4-8bX" firstAttribute="leading" secondItem="pQ5-de-sva" secondAttribute="trailing" constant="8" id="vEl-fV-4iD"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outletCollection property="imageViewCollection" destination="pQ5-de-sva" collectionClass="NSMutableArray" id="aNp-cn-mfH"/>
-                                    <outletCollection property="imageViewCollection" destination="Kd6-l4-8bX" collectionClass="NSMutableArray" id="iZQ-uB-QnL"/>
-                                    <outletCollection property="labelsCollection" destination="DjJ-KF-6pW" collectionClass="NSMutableArray" id="Wu4-oQ-uLJ"/>
-                                    <outletCollection property="labelsCollection" destination="5Wc-XQ-peX" collectionClass="NSMutableArray" id="tEl-mO-qRv"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="9XJ-9K-kmf" id="YoM-bP-chK"/>
-                            <outlet property="delegate" destination="9XJ-9K-kmf" id="GUd-Em-tNu"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tfM-re-kDT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1205.5999999999999" y="116.49175412293854"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="8TN-qH-x5Y">
             <objects>
@@ -188,7 +151,6 @@
     </scenes>
     <resources>
         <image name="IconMenu" width="24" height="27"/>
-        <image name="IconProfile" width="24" height="28"/>
         <image name="VS" width="64" height="39"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

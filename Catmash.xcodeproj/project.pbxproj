@@ -8,16 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		DB049DE82019FB0C0078D134 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB049DE72019FB0C0078D134 /* AppDelegate.swift */; };
-		DB049DEA2019FB0C0078D134 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB049DE92019FB0C0078D134 /* ViewController.swift */; };
+		DB049DEA2019FB0C0078D134 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB049DE92019FB0C0078D134 /* MainViewController.swift */; };
 		DB049DED2019FB0C0078D134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB049DEB2019FB0C0078D134 /* Main.storyboard */; };
 		DB049DEF2019FB0C0078D134 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB049DEE2019FB0C0078D134 /* Assets.xcassets */; };
 		DB049DF22019FB0C0078D134 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB049DF02019FB0C0078D134 /* LaunchScreen.storyboard */; };
 		DB049DFA2019FD6F0078D134 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB049DF92019FD6F0078D134 /* UIColorExtension.swift */; };
 		DB0C37D5201A4820007DAA46 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0C37D4201A4820007DAA46 /* Tools.swift */; };
-		DB0C37E1201A4D85007DAA46 /* AllCatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0C37E0201A4D85007DAA46 /* AllCatsTableViewController.swift */; };
-		DB0C37E3201A4D9B007DAA46 /* CatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0C37E2201A4D9B007DAA46 /* CatTableViewCell.swift */; };
 		DB0C37E6201A4FFD007DAA46 /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0C37E5201A4FFD007DAA46 /* Cat.swift */; };
 		DB0C37E8201B4CB9007DAA46 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0C37E7201B4CB9007DAA46 /* NotificationsManager.swift */; };
+		DBB80B72201C93050058D18A /* AllCatsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB80B71201C93050058D18A /* AllCatsCollectionViewController.swift */; };
 		DBD9D1BD201A0FBF00EDAC85 /* UICustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9D1BC201A0FBF00EDAC85 /* UICustomView.swift */; };
 		DBD9D1BF201A250300EDAC85 /* CutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9D1BE201A250300EDAC85 /* CutView.swift */; };
 /* End PBXBuildFile section */
@@ -25,17 +24,16 @@
 /* Begin PBXFileReference section */
 		DB049DE42019FB0C0078D134 /* Catmash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catmash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB049DE72019FB0C0078D134 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DB049DE92019FB0C0078D134 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DB049DE92019FB0C0078D134 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DB049DEC2019FB0C0078D134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DB049DEE2019FB0C0078D134 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB049DF12019FB0C0078D134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB049DF32019FB0C0078D134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB049DF92019FD6F0078D134 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		DB0C37D4201A4820007DAA46 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
-		DB0C37E0201A4D85007DAA46 /* AllCatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCatsTableViewController.swift; sourceTree = "<group>"; };
-		DB0C37E2201A4D9B007DAA46 /* CatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatTableViewCell.swift; sourceTree = "<group>"; };
 		DB0C37E5201A4FFD007DAA46 /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 		DB0C37E7201B4CB9007DAA46 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		DBB80B71201C93050058D18A /* AllCatsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCatsCollectionViewController.swift; sourceTree = "<group>"; };
 		DBD9D1BC201A0FBF00EDAC85 /* UICustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICustomView.swift; sourceTree = "<group>"; };
 		DBD9D1BE201A250300EDAC85 /* CutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,9 +85,8 @@
 			children = (
 				DB049DF02019FB0C0078D134 /* LaunchScreen.storyboard */,
 				DB049DEB2019FB0C0078D134 /* Main.storyboard */,
-				DB049DE92019FB0C0078D134 /* ViewController.swift */,
-				DB0C37E0201A4D85007DAA46 /* AllCatsTableViewController.swift */,
-				DB0C37E2201A4D9B007DAA46 /* CatTableViewCell.swift */,
+				DB049DE92019FB0C0078D134 /* MainViewController.swift */,
+				DBB80B71201C93050058D18A /* AllCatsCollectionViewController.swift */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -200,15 +197,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB049DEA2019FB0C0078D134 /* ViewController.swift in Sources */,
+				DB049DEA2019FB0C0078D134 /* MainViewController.swift in Sources */,
 				DB049DE82019FB0C0078D134 /* AppDelegate.swift in Sources */,
 				DB0C37E6201A4FFD007DAA46 /* Cat.swift in Sources */,
 				DBD9D1BD201A0FBF00EDAC85 /* UICustomView.swift in Sources */,
 				DB0C37D5201A4820007DAA46 /* Tools.swift in Sources */,
-				DB0C37E1201A4D85007DAA46 /* AllCatsTableViewController.swift in Sources */,
 				DB049DFA2019FD6F0078D134 /* UIColorExtension.swift in Sources */,
-				DB0C37E3201A4D9B007DAA46 /* CatTableViewCell.swift in Sources */,
 				DB0C37E8201B4CB9007DAA46 /* NotificationsManager.swift in Sources */,
+				DBB80B72201C93050058D18A /* AllCatsCollectionViewController.swift in Sources */,
 				DBD9D1BF201A250300EDAC85 /* CutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
