@@ -57,6 +57,11 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(didLoadCat(_:)), name: NotificationsManager.didLoadCat, object: nil)
+
+        let topMask = UIImageView(image: #imageLiteral(resourceName: "Rectangle"))
+        topImageView.mask = topMask
+        let bottomMask = UIImageView(image: #imageLiteral(resourceName: "RectangleReverse"))
+        bottomImageView.mask = bottomMask
     }
 
     /// Fade animation.

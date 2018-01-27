@@ -59,6 +59,10 @@ class AllCatsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
 
+        cell.contentView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
+
         let size = CGSize(width: cell.contentView.frame.width, height: cell.contentView.frame.height - 25)
         let imageView = UIImageView(frame: CGRect(origin: cell.contentView.frame.origin, size: size))
         imageView.image = sortedCats[indexPath.row].image
