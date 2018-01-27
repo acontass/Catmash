@@ -99,6 +99,13 @@ class Cat {
         }
     }
 
+    static public func reloadCats() {
+        all.forEach {
+            $0.displayed = false
+            $0.mark = 0
+        }
+    }
+
     static public var allDisplayed: Bool {
         get {
             for cat in all {

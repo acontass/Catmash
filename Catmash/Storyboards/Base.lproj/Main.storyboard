@@ -80,7 +80,7 @@
                             <constraint firstItem="4uD-17-ZIn" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="40C-Cx-v7j"/>
                             <constraint firstItem="vUj-hI-Qj6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7Ql-fU-wfE"/>
                             <constraint firstItem="vUj-hI-Qj6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="937-IB-3FY"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4uD-17-ZIn" secondAttribute="bottom" id="EvQ-MU-zUw"/>
+                            <constraint firstAttribute="bottom" secondItem="4uD-17-ZIn" secondAttribute="bottom" id="EvQ-MU-zUw"/>
                             <constraint firstItem="4uD-17-ZIn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JdY-hi-E9E"/>
                             <constraint firstItem="4uD-17-ZIn" firstAttribute="top" secondItem="vUj-hI-Qj6" secondAttribute="bottom" constant="-40" id="KUD-7F-qHV"/>
                             <constraint firstItem="oNC-3U-9et" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="32" id="LQY-KV-fCH"/>
@@ -90,6 +90,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="CATMASH" largeTitleDisplayMode="never" id="YMc-g2-cjr">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="FJ5-OZ-MMr">
+                            <connections>
+                                <action selector="skipTouched" destination="BYZ-38-t0r" id="zSW-Hi-Ful"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="IconMenu" landscapeImage="IconMenu" id="Rb1-7X-Ged">
                             <connections>
                                 <segue destination="jdZ-3e-eG1" kind="show" id="5Jp-Jk-dWx"/>

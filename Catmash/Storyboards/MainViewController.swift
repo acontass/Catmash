@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
     /// The cat image view at top of the view.
     
     @IBOutlet weak var bottomImageView: UIImageView!
-    
+
     /// Current displayed cats.
 
     private var displayedCats: (top: Cat?, bottom: Cat?) = (nil, nil)
@@ -59,8 +59,14 @@ class MainViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(didLoadCat(_:)), name: NotificationsManager.didLoadCat, object: nil)
 
         let topMask = UIImageView(image: #imageLiteral(resourceName: "Rectangle"))
+        topMask.contentMode = .scaleToFill
+        let height = (UIScreen.main.bounds.height - 64) / 2 + 20.5
+        topMask.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: height)
         topImageView.mask = topMask
+
         let bottomMask = UIImageView(image: #imageLiteral(resourceName: "RectangleReverse"))
+        bottomMask.contentMode = .scaleToFill
+        bottomMask.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: height)
         bottomImageView.mask = bottomMask
     }
 
@@ -97,6 +103,8 @@ class MainViewController: UIViewController {
             UIView.animate(withDuration: 0.5) {
                 self.winnerImageView?.frame = CGRect(origin: CGPoint(x: 0, y: 64), size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 64))
             }
+            let button = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshTouched))
+            navigationItem.setLeftBarButton(button, animated: true)
             return
         }
         guard let new = Cat.getNoDisplayedCat() else {
@@ -114,6 +122,28 @@ class MainViewController: UIViewController {
             topImageView.image = displayedCats.top?.image
             animateImageAppears(topImageView)
         }
+    }
+
+    @IBAction func skipTouched() {
+        guard displayedCats.bottom != nil && displayedCats.top != nil else {
+            return
+        }
+        updateImage(keep: .bottom)
+        updateImage(keep: .top)
+    }
+
+    /// The action when the top left button is touched (only when the winner is displayed)
+
+    @objc internal func refreshTouched() {
+        Cat.reloadCats()
+        UIView.animate(withDuration: 0.5, animations: {
+            self.winnerImageView?.alpha = 0
+        }) { _ in
+            self.winnerImageView?.removeFromSuperview()
+            self.winnerImageView = nil
+        }
+        let button = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(skipTouched))
+        navigationItem.setLeftBarButton(button, animated: true)
     }
 
     /// The action called when the top picture is touched.
