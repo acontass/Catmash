@@ -34,6 +34,16 @@ class AllCatsCollectionViewController: UICollectionViewController {
         layout.minimumInteritemSpacing = 8.0
         collectionView?.setCollectionViewLayout(layout, animated: false)
         sortedCats = Cat.all.sorted { $0.mark > $1.mark }
+
+        collectionView?.refreshControl = UIRefreshControl()
+        collectionView?.refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        collectionView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+
+    @objc internal func refresh() {
+        sortedCats = Cat.all.sorted { $0.mark > $1.mark }
+        collectionView?.reloadData()
+        collectionView?.refreshControl?.endRefreshing()
     }
 
     // MARK: UICollectionViewDataSource
@@ -41,7 +51,6 @@ class AllCatsCollectionViewController: UICollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sortedCats.count

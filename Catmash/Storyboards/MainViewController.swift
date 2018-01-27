@@ -79,8 +79,8 @@ class MainViewController: UIViewController {
     private func updateImage(keep: ePosition) {
         guard !Cat.allDisplayed else {
             winnerImageView = UIImageView(frame: CGRect.zero)
-            winnerImageView?.contentMode = .scaleAspectFill
-            winnerImageView?.clipsToBounds = true
+            winnerImageView?.contentMode = .scaleAspectFit
+            winnerImageView?.backgroundColor = .white
             var cat: Cat?
             Cat.all.forEach {
                 if $0.mark > cat?.mark ?? 0 {
